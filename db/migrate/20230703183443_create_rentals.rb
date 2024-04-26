@@ -7,6 +7,6 @@ class CreateRentals < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_index :rentals, [:user_id, :movie_id], unique: true
+    add_index :rentals, [:user_id, :movie_id], unique: false
   end
 end
