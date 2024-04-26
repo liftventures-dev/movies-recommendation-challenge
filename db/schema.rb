@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_03_183443) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_rentals_on_movie_id"
-    t.index ["user_id", "movie_id"], name: "index_rentals_on_user_id_and_movie_id", unique: true
+    t.index ["user_id", "movie_id"], name: "index_rentals_on_user_id_and_movie_id"
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end
 
