@@ -18,9 +18,15 @@ class MoviesController < ApplicationController
   def rent
     user = User.find(params[:user_id])
     movie = Movie.find(params[:id])
-    movie.available_copies -= 1
-    movie.save
-    user.rented << movie
-    render json: movie
+    if (movie.available_copies >= 1)
+      Movie.transaction do
+        movie.available_copies -= 1
+        movie.save
+        user.rented << movie
+      end
+      render json: movie
+    else
+      render json: { error: "There are no available copies for this movie." }, status: :bad_request
+    end
   end
 end
